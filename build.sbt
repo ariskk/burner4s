@@ -4,16 +4,47 @@ lazy val scala212 = "2.12.10"
 lazy val scala213 = "2.13.3"
 lazy val supportedScalaVersions = List(scala212, scala213)
 
-ThisBuild / scalaVersion     := "2.13.3"
-ThisBuild / version          := "0.1.0"
-ThisBuild / organization     := "com.ariskk"
-ThisBuild / organizationName := "ariskk"
-
 lazy val root = (project in file("."))
   .settings(
-    name := "burner4s",
-    libraryDependencies += scalaTest % Test,
-    crossScalaVersions := supportedScalaVersions
+    commonSettings,
+    publishingSettings
   )
 
-// See https://www.scala-sbt.org/1.x/docs/Using-Sonatype.html for instructions on how to publish to Sonatype.
+lazy val commonSettings = Seq(
+  name := "burner4s",
+  libraryDependencies += scalaTest % Test,
+  crossScalaVersions := supportedScalaVersions,
+  scalaVersion := "2.13.3",
+  version := "0.1.0-SNAPSHOT"
+)
+
+lazy val publishingSettings = Seq(
+  organization := "com.ariskk",
+  organizationName := "ariskk",
+  organizationHomepage := Some(url("http://ariskk.com/")),
+  scmInfo := Some(
+    ScmInfo(
+      url("https://github.com/ariskk/burner4s"),
+      "scm:git@github.com:ariskk/burner4s.git"
+    )
+  ),
+  developers := List(
+    Developer(
+      id    = "ariskk",
+      name  = "Aris Koliopoulos",
+      email = "aris@ariskk.com",
+      url   = url("http://ariskk.com")
+    )
+  ),
+  description := "Burner email look up tool",
+  licenses := List("MIT" -> new URL("http://opensource.org/licenses/MIT")),
+  homepage := Some(url("https://github.com/ariskk/burner4s")),
+  pomIncludeRepository := { _ => false },
+  publishTo := {
+    val nexus = "https://oss.sonatype.org/"
+    if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+    else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  },
+  publishMavenStyle := true
+)
+
