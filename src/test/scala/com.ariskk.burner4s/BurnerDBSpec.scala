@@ -16,4 +16,12 @@ class BurnerDBSpec extends AnyFunSpec with Matchers {
     BurnerDB.contains("google.com") shouldBe false
     BurnerDB.contains("maildrop.cc") shouldBe true
   }
+
+  it("Shouldn't break when supplied with erroneous input") {
+    BurnerDB.contains("") shouldBe false
+    BurnerDB.contains("1234") shouldBe false
+    BurnerDB.contains("com.com.com") shouldBe false
+    BurnerDB.contains(null) shouldBe false
+    BurnerDB.contains("email@email@email.com") shouldBe false
+  }
 }

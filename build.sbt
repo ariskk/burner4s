@@ -14,8 +14,11 @@ lazy val commonSettings = Seq(
   name := "burner4s",
   libraryDependencies += scalaTest % Test,
   crossScalaVersions := supportedScalaVersions,
-  scalaVersion := "2.13.3",
-  version := "0.1.0-SNAPSHOT"
+  scalaVersion := scala213,
+  version := "0.1.0-SNAPSHOT",
+  scalacOptions ++= Seq(
+    "-deprecation"
+  )
 )
 
 lazy val publishingSettings = Seq(
