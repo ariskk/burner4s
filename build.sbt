@@ -15,11 +15,12 @@ lazy val commonSettings = Seq(
   libraryDependencies += scalaTest % Test,
   crossScalaVersions := supportedScalaVersions,
   scalaVersion := scala213,
-  version := "0.1.0-SNAPSHOT",
   scalacOptions ++= Seq(
     "-deprecation"
   )
 )
+
+import ReleaseTransformations._
 
 lazy val publishingSettings = Seq(
   organization := "com.ariskk",
@@ -48,6 +49,18 @@ lazy val publishingSettings = Seq(
     if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
     else Some("releases" at nexus + "service/local/staging/deploy/maven2")
   },
-  publishMavenStyle := true
+  publishMavenStyle := true,
+  releaseProcess := Seq[ReleaseStep](
+    inquireVersions,
+    runClean,
+    runTest,
+    setReleaseVersion,
+    commitReleaseVersion,
+    tagRelease,
+    publishArtifacts,
+    setNextVersion,
+    commitNextVersion,
+    ReleaseStep(action = Command.process("sonatypeReleaseAll", _)),
+    pushChanges
+  )
 )
-
