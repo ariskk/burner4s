@@ -26,4 +26,4 @@ Or even
 val isBurner: Boolean = BurnerDB.contains("gmail.com")
 ```
 
-The implementation essentially loads the database into a `Set` and looks up the domain of the address. It uses ~20MB of memory.
+The implementation essentially loads the database into a `Set` and looks up the domain of the address. It uses ~3MB of memory.
