@@ -10,7 +10,7 @@ Many of those providers allow programmatic creation which enables horrible appli
 
 Add the following to `build.sbt`
 ```scala
-libraryDependencies += "com.ariskk" %% "burner4s" % "0.1.0"
+libraryDependencies += "com.ariskk" %% "burner4s" % "0.1.1"
 ```
 And then:
 
