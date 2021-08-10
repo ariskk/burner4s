@@ -1,17 +1,20 @@
 ### Burner4s
 
-Look up email addresses against a burner email database of 100K+ termorary email providers (aka single-use email addresses).
+Look up email addresses against a burner email database of 60K+ temporary email providers (aka single-use email addresses).
 
 The tool is based on [this list](https://github.com/wesbos/burner-email-providers)
 
-Many of those providers allow programmatic creation which enables horrible application layer attacks.
+Many of those providers allow programmatic creation and enable horrible application layer attacks.
 
 ## Usage
 
 Add the following to `build.sbt`
 ```scala
-libraryDependencies += "com.ariskk" %% "burner4s" % "0.1.5"
+libraryDependencies += "com.ariskk" %% "burner4s" % "0.1.6"
 ```
+
+Up to version `0.1.5`, only Scala `2.12` and `2.13` are supported. `0.1.6` introduces Scala 3 support.
+
 And then:
 
 ```scala
