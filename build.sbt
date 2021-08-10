@@ -2,7 +2,8 @@ import Dependencies._
 
 lazy val scala212 = "2.12.13"
 lazy val scala213 = "2.13.4"
-lazy val supportedScalaVersions = List(scala212, scala213)
+lazy val scala3 = "3.0.0"
+lazy val supportedScalaVersions = List(scala212, scala213, scala3)
 
 lazy val root = (project in file("."))
   .settings(
@@ -14,7 +15,7 @@ lazy val commonSettings = Seq(
   name := "burner4s",
   libraryDependencies += scalaTest % Test,
   crossScalaVersions := supportedScalaVersions,
-  scalaVersion := scala213,
+  scalaVersion := scala3,
   scalacOptions ++= Seq(
     "-deprecation"
   )
