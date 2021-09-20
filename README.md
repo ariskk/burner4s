@@ -10,10 +10,10 @@ Many of those providers allow programmatic creation and enable horrible applicat
 
 Add the following to `build.sbt`
 ```scala
-libraryDependencies += "com.ariskk" %% "burner4s" % "0.1.6"
+libraryDependencies += "com.ariskk" %% "burner4s" % "0.1.7"
 ```
 
-Up to version `0.1.5`, only Scala `2.12` and `2.13` are supported. `0.1.6` introduces Scala 3 support.
+Up to version `0.1.5`, only Scala `2.12` and `2.13` are supported. `0.1.6` introduced Scala 3 support.
 
 And then:
 
